@@ -1,0 +1,156 @@
+/**
+ * collex.css
+ *
+ * Author: Center for Digital Humanities - University of South Carolina.
+ * Version: Alpha.
+ * Copyright: 2015. All Rights Reserved.
+ *
+ * Table of Contents:
+ * - Global Tags
+ * - Global Classes
+ * - Governance Page
+ * - Edit Submission Page
+ * - Bootstrap Modifications
+ */
+
+/**
+ * Global Tags
+ */
+a { color: #82172A; }
+a:hover,
+a:focus { color: #681422; }
+
+/**
+ * Global Classes
+ */
+.form-group > .control-label > .close {
+  opacity: 0;
+  margin-top: -3px;
+
+  -webkit-transition: opacity 0.2s ease-in-out;
+     -moz-transition: opacity 0.2s ease-in-out;
+      -ms-transition: opacity 0.2s ease-in-out;
+       -o-transition: opacity 0.2s ease-in-out;
+          transition: opacity 0.2s ease-in-out;
+}
+
+.form-group:hover > .control-label > .close {
+  opacity: 1;
+
+  -webkit-transition: opacity 0.2s ease-in-out;
+     -moz-transition: opacity 0.2s ease-in-out;
+      -ms-transition: opacity 0.2s ease-in-out;
+       -o-transition: opacity 0.2s ease-in-out;
+          transition: opacity 0.2s ease-in-out;
+}
+
+.form-item-example {
+  margin: 15px;
+  padding: 15px;
+
+  color: #82172A;
+  font-family: monospace;
+
+  border: 1px dotted #000000;
+  border-radius: 15px;
+}
+
+.page-header > .submission-tools { margin-top: 20px; }
+.page-header > .submission-tools > .btn:not(:last-child) { margin-right: 10px; }
+
+/**
+ * Governance Page
+ */
+.comment-text { white-space: pre-line; }
+
+/**
+ * View Submission Page
+ */
+.list-single > li { margin-bottom: 25px; }
+
+/**
+ * Edit Submission Page
+ */
+.list-part { margin-bottom: 10px; }
+
+.edit-success {
+  top: 50%;
+
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.edit-success .glyphicon {
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  font-size: 45px;
+}
+
+/**
+ * Comments and Suggested Viewers
+ */
+.viewer {
+  display: inline-block;
+  width: 24%;
+  margin: 5px 4px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  text-align: center;
+
+  border-radius: 3px;
+  background-color: #ECECEC;
+
+  cursor: pointer;
+}
+.viewer:nth-child(4n+1) { margin-left: 7px; }
+.viewer:hover,
+.viewer-active {
+  -webkit-box-shadow: 0 0 4px #000000;
+     -moz-box-shadow: 0 0 4px #000000;
+          box-shadow: 0 0 4px #000000;
+}
+
+.comment {
+  margin-bottom: 1%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+
+  border: 1px solid #ECECEC;
+  border-radius: 7px;
+}
+
+.comment-reply {
+  margin-left: 6%;
+  margin-bottom: 1%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 15px;
+
+  border: 1px solid #ECECEC;
+  border-radius: 7px;
+}
+
+.comment-tools {
+  float: right;
+  margin-top: 10px;
+}
+.comment-tools > li {
+  color: #82172A;
+  font-size: 15px;
+
+  cursor: pointer;
+}
+.comment-tools > li:hover { text-decoration: underline; }
+
+/**
+ * Bootstrap Modifications
+ */
+button.close,
+button.close:hover { color: #000000; }
+
+.well-sm { overflow: auto; }

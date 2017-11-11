@@ -1,0 +1,30 @@
+Index Iuris TODO List:
+
+Home
+
+Metadata Submission (rdf-form)
+- Make default size of "text divisions" text box bigger
+- Add dropdown for archive/namespace (pending discussion with C&A)
+- Multiple fields need approval from Colin and Abigail
+- Functionality to add subject and discipline to database.
+	This will need to be discussed with Colin and Abigail
+- Perform a check for to see if commented, available, suggested fields were passed in.
+
+Governance
+
+View Submissions
+
+Edit Submission
+- Add dropdown for archive/namespace (pending discussion with C&A)
+- Test new hasPart and isPartOf functionality
+	write js to update modal dialogs when user deletes a part
+
+View Individual Submission
+
+Comments
+- Update database tables on Lichen to reflect new schema for comments, upload new pages!!!
+
+Other
+- Possible: add column to objects table to show "edited by user_id"
+	- Fix edit page (saveObjectToDB function) so that edit does not change user_id in objects table
+- Possible: First and last Name for each account.
