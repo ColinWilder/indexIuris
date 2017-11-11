@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<solr persistent="true">
+  <cores hostContext="solr" defaultCoreName="resources" hostPort="8983" zkClientTimeout="${zkClientTimeout:15000}" adminPath="/admin/cores">
+    <core loadOnStartup="true" transient="false" dataDir="MESALocalContent" name="MESALocalContent" instanceDir="local/"/>
+    <core loadOnStartup="true" transient="false" dataDir="INDEXIURISLocalContent" name="INDEXIURISLocalContent" instanceDir="local/"/>
+    <core loadOnStartup="true" transient="false" dataDir="18thConnectLocalContent" name="18thConnectLocalContent" instanceDir="local/"/>
+    <core loadOnStartup="true" transient="false" dataDir="NINESLocalContent" name="NINESLocalContent" instanceDir="local/"/>
+    <core loadOnStartup="true" transient="false" dataDir="testMESALocalContent" name="testMESALocalContent" instanceDir="local/"/>
+    <core loadOnStartup="true" transient="false" dataDir="testNINESLocalContent" name="testNINESLocalContent" instanceDir="local/"/>
+    <core loadOnStartup="true" transient="false" dataDir="test18thConnectLocalContent" name="test18thConnectLocalContent" instanceDir="local/"/>
+    <core loadOnStartup="true" transient="false" dataDir="testResources" name="testResources" instanceDir="archives/"/>
+    <core schema="schema.xml" loadOnStartup="true" transient="false" dataDir="archive_colby" name="archive_colby" instanceDir="archives/" config="solrconfig.xml"/>
+    <core loadOnStartup="true" transient="false" dataDir="resources" name="resources" instanceDir="archives/"/>
+    <core loadOnStartup="true" transient="false" dataDir="pages" name="pages" instanceDir="pages/"/>
+    <core schema="schema.xml" loadOnStartup="true" transient="false" dataDir="archive_PENNINGTON" name="archive_PENNINGTON" instanceDir="archives/" config="solrconfig.xml"/>
+  </cores>
+</solr>
