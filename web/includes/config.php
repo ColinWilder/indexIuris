@@ -15,10 +15,10 @@ session_start();
 date_default_timezone_set("America/New_York");
 
 // Define variables.
-define("DB_HOST", "localhost");
+define("DB_HOST", "indexiuris_db");
 define("DB_USER", "root");
 define("DB_PASS", "root");
-define("DB_BASE", "collex");
+define("DB_BASE", "indexiuris");
 define("MD5_KEY", "c1o2l3l4e5x6");
 define("ROOT_FOLDER", "http://" . $_SERVER["HTTP_HOST"] . "/indexiuris/");
 define("CAPTCHA_SECRET_KEY", "6LcrxgkTAAAAAGwNKxaLOjygIeF-_814mdhhxDkf");
