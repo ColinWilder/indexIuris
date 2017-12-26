@@ -13,11 +13,11 @@ require "includes/header.php";
 global $mysqli;
 
 $id = $_GET["id"];
-$statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
+$statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type_of_original_artifact,type_of_digital_artifact,type_of_content, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
 $statement->bind_param("i", $id);
 $statement->execute();
 $statement->store_result();
-$statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
+$statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type_original,$type_digital,$type_content, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
 ?>
 <?php if ($statement->fetch()): ?>
   <?php if ($user_id == $_SESSION["user_id"] || isSuper()): ?>
@@ -51,7 +51,9 @@ $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type, 
         <div class="col-xs-4">
           <ul class="list-group list-single">
             <?php
-            print printListItem("Type", $type);
+            print printListItem("Type of original artifact", $type_original);
+            print printListItem("Type of digital artifact", $type_digital);
+            print printListItem("Type of content", $type_content);
             print printListItem("Origin", $origin);
             print printListItem("Provenance", $provenance);
             print printListItem("File Format", $file_format);

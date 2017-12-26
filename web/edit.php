@@ -22,11 +22,11 @@ require "includes/header.php";
 
 global $mysqli;
 
-$statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
+$statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type_of_original_artifact,type_of_digital_artifact,type_of_content, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
 $statement->bind_param("s", $id);
 $statement->execute();
 $statement->store_result();
-$statement->bind_result($custom_namespace, $rdf_about, $archive, $submissionTitle, $type, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
+$statement->bind_result($custom_namespace, $rdf_about, $archive, $submissionTitle, $type_original,$type_digital,$type_content, $url, $origin, $provenance, $place_of_composition, $shelfmark, $freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
 ?>
 <?php if ($statement->fetch()): ?>
   <?php if ($user_id == $_SESSION["user_id"] || isSuper()): ?>
@@ -127,14 +127,14 @@ $statement->bind_result($custom_namespace, $rdf_about, $archive, $submissionTitl
 
               <hr>
 
-              <span class="hide">Type</span>
+              <span class="hide">Type of original artifact</span>
               <section>
                 <div class="form-group">
                   <label for="type" class="control-label col-xs-2">Type</label>
                   <div class="col-xs-10">
                     <select class="form-control" id="type" name="type" required="">
                       <?php foreach (array("Critical edition", "Digital image", "Drawing", "Facsimile", "Fragment", "Illustration", "Interactive Resource", "Manuscript Codex", "Map", "Microfilm", "Image (b/w)", "Online images (for manuscripts online)", "Online transcription of printed book (html, XML)", "Physical Object [such as a stone tablet, monumental arch, seal]", "Printed book", "Roll", "Scanned image of printed book (pdf)", "Sheet", "Typescript") as $item): ?>
-                        <option<?php print $type == $item ? ' selected="" ' : " "; ?>value="<?php print $item; ?>"><?php print $item; ?></option>
+                        <option<?php print $type_original == $item ? ' selected="" ' : " "; ?>value="<?php print $item; ?>"><?php print $item; ?></option>
                       <?php endforeach; ?>
                     </select>
                   </div>

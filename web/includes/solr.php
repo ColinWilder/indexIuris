@@ -13,7 +13,6 @@
 
 
 require_once('config.php');
-//require_once('db-config.php');
 
 
 //TODO: add error checking!!!
@@ -420,19 +419,7 @@ function idHasImage($id){
 
 
 
-function isLoggedIn(){
-  if (isset($_SESSION['logged-in'])){
-    return $_SESSION['logged-in'];
-  }
-  else {
-    $_SESSION['logged-in'] = false;
-    return false;
-  }
-}
 
-function isSuper(){
-  return ($_SESSION['user_role']=='super') ? true : false;
-}
 
 
 

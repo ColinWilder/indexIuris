@@ -3,3 +3,4 @@ solr/server/logs/solr.log
 solr/server/logs/solr_gc.log
 *.log
 solr/bin/solr-8983.pid
+web/includes/config.php

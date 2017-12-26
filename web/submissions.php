@@ -25,7 +25,7 @@ require "includes/header.php";
           <tr>
             <th>Title</th>
             <th>Archive</th>
-            <th>Type</th>
+            <!--<th>Type</th>-->
             <?php if (isSuper()): ?>
               <th>User</th>
             <?php endif; ?>
@@ -38,9 +38,9 @@ require "includes/header.php";
           $statement;
 
           if (isSuper()) {
-            $statement = $mysqli->prepare("SELECT id, title, archive, type, user_id FROM objects");
+            $statement = $mysqli->prepare("SELECT id, title, archive, user_id FROM objects");
           } else {
-            $statement = $mysqli->prepare("SELECT id, title, archive, type FROM objects WHERE user_id = ?");
+            $statement = $mysqli->prepare("SELECT id, title, archive FROM objects WHERE user_id = ?");
             $statement->bind_param("i", $_SESION["user_id"]);
           }
 
@@ -48,16 +48,16 @@ require "includes/header.php";
           $statement->store_result();
 
           if (isSuper()) {
-            $statement->bind_result($id, $title, $archive, $type, $userID);
+            $statement->bind_result($id, $title, $archive, $userID);
           } else {
-            $statement->bind_result($id, $title, $archive, $type);
+            $statement->bind_result($id, $title, $archive);
           }
           ?>
           <?php while ($statement->fetch()): ?>
             <tr>
               <td><?php print $title; ?></td>
               <td><?php print $archive; ?></td>
-              <td><?php print $type; ?></td>
+              <!--<td><?php //print $type; ?></td>-->
               <?php if (isSuper()): ?>
                 <td><?php print findUsername($userID); ?></td>
               <?php endif; ?>
