@@ -173,15 +173,6 @@
    <copyField source="contributing_institution"    dest="contributing_institution_facet"/>
    
    
-   
-   
-   
-   <!-- Type of Content -->
-   <field name="type_content" type="string" indexed="true" stored="true" required="true" multiValued="false" />
-   
-   <!-- Type of Digital artifact -->
-   <field name="type_digital" type="string" indexed="true" stored="true" required="true" multiValued="false" />
-   
    <!-- Roles Dynamic field
    This field is used for all "role" fields
    Examples:
@@ -216,11 +207,6 @@
    <!--Date of digital surrogate -->
    <field name="date_digital" type="text_general" indexed="true" stored="true" multiValued="false"/>
    
-   <!-- Geographic Location - Human -->
-   <field name="geolocation_human" type="text_general" indexed="true" stored="true" required="true" multiValued="true" />
-   <field name="geohuman_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
-   <copyField source="geolocation_human"    dest="geohuman_facet"/>
-   
    <!-- File Format -->
    <field name="file_format" type="string" indexed="true" stored="true" required="true" multiValued="false" />
    
@@ -247,7 +233,10 @@
    <!-- Alternative Title(s) -->
    <field name="alternative_title" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="true" />
 
-   
+   <!-- LC Subject Headings -->
+   <field name="subject_heading" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="true" />
+   <field name="subject_heading_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
+   <copyField source="subject_heading"    dest="subject_heading_facet"/>
    
    <!-- Thumbnail URL -->
    <field name="thumbnail_url" type="string" indexed="true" stored="true" required="false" multiValued="false" />
@@ -255,13 +244,20 @@
    <!-- Description -->
    <field name="description" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
 
-   
-   
    <!-- Full Text -->
    <field name="full_text" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
-   <!-- Type of Physical Artifact -->
-   <field name="type_physical" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
+   <!-- Type of Original Artifact -->
+   <field name="type_original" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
+
+   <!-- Type of Content -->
+   <field name="type_content" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+   
+   <!-- Type of Digital artifact -->
+   <field name="type_digital" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+   
+   <!-- Date of Composition - Human readable -->
+   <field name="date_original_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
    <!-- Date of Original Artifact - Human readable -->
    <field name="date_original_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
@@ -269,37 +265,7 @@
    <!-- Date of Digital Surrogate - Human readable -->
    <field name="date_digital_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
-   <!-- Geographic Location - Machine -->
-   <field name="geolocation_machine" type="location_rpt" indexed="true" stored="true" required="false" multiValued="true" />
-   
-   
-   
-   
-   <!-- LC Subject Headings -->
-   <field name="subject_heading" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="true" />
-   <field name="subject_heading_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
-   <copyField source="subject_heading"    dest="subject_heading_facet"/>
-   
-   <!-- Extent/Size/Duration -->
-   <field name="extent" type="string" indexed="true" stored="true" required="false" multiValued="false" />
-   
-   <!-- Copyright holder -->
-   <field name="copyright_holder" type="string" indexed="true" stored="true" required="false" multiValued="false" />
-   
-   <!-- Use Permissions -->
-   <field name="use_permissions" type="string" indexed="true" stored="true" required="false" multiValued="false" />
-   
-   <!-- Language -->
-   <field name="language" type="string" indexed="true" stored="true" required="false" multiValued="true" />
-   
-   <!-- Notes -->
-   <field name="notes" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
-   
-   
-   
-   <!--<copyField source="role_*"    dest="role_ALL"/>-->
 
-   
    
    
 
