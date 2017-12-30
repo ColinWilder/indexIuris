@@ -176,3 +176,19 @@ function deleteOneValue($id, $type) {
   $statement->bind_param("i", $id);
   $statement->execute();
 } // function deleteOneValue($id, $type)
+
+
+function getObjectFromDB($object_id){
+  global $mysqli;
+  $statement = $mysqli->prepare("SELECT custom_namespace, rdf_about, archive, title, type_of_original_artifact,type_of_digital_artifact,type_of_content, url, origin, provenance, place_of_composition, shelfmark, freeculture, full_text_url, full_text_plain, is_full_text, image_url, source, metadata_xml_url, metadata_html_url, text_divisions, ocr, thumbnail_url, notes, file_format, date_created, date_updated, user_id FROM objects WHERE id = ? LIMIT 1");
+  $statement->bind_param("s", $object_id);
+  $statement->execute();
+  $statement->store_result();
+  $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type_original,$type_digital,$type_content, $url, $origin, $provenance, $place_composition, $shelfmark, $is_freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $is_ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
+
+  $temp = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
+  $temp->bind_param("s", $id);
+  $temp->execute();
+  $temp->bind_result($role, $value);
+
+}

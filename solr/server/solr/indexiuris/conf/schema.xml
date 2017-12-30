@@ -133,10 +133,7 @@
    
    <!-- Title -->
    <field name="title" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
-   
-
-   <!--type goes here>
-
+  
    <!-- URL -->
    <field name="url" type="string" indexed="true" stored="true" required="true" multiValued="false" />
 
