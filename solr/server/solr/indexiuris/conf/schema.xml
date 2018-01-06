@@ -162,10 +162,10 @@
    <field name="is_ocr" type="string" indexed="true" stored="true" required="true" multiValued="false" />
 
 
-   <!-- Contributing Institution -->   
+   <!-- Contributing Institution   
    <field name="contributing_institution" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
    <field name="contributing_institution_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
-   <copyField source="contributing_institution"    dest="contributing_institution_facet"/>
+   <copyField source="contributing_institution"    dest="contributing_institution_facet"/>-->
    
    
    <!-- Roles Dynamic field
@@ -236,11 +236,17 @@
    <!-- Thumbnail URL -->
    <field name="thumbnail_url" type="string" indexed="true" stored="true" required="false" multiValued="false" />
    
-   <!-- Description -->
-   <field name="description" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+   <!-- Description 
+   <field name="description" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />-->
 
    <!-- Full Text -->
    <field name="full_text" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
+  
+   <!-- is Full Text -->
+   <field name="is_full_text" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
+   
+   <!-- Full Text Url-->
+   <field name="full_text_url" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
    <!-- Type of Original Artifact -->
    <field name="type_original" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />

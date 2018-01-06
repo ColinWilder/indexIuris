@@ -461,7 +461,7 @@ if (!isset($_POST["submitted"])): ?>
           <div class="row">
           
           <div class="col-xs-6"> 
-          <h3 class="form-legend collapse-form-element">- Provenance <small>(optional)</small></h3>
+          <h3 class="form-legend collapse-form-element">+ Provenance <small>(optional)</small></h3>
           <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group">

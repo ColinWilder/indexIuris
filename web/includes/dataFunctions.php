@@ -186,9 +186,40 @@ function getObjectFromDB($object_id){
   $statement->store_result();
   $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type_original,$type_digital,$type_content, $url, $origin, $provenance, $place_composition, $shelfmark, $is_freeculture, $full_text_url, $full_text_plain, $is_full_text, $image_url, $source, $metadata_xml_url, $metadata_html_url, $text_divisions, $is_ocr, $thumbnail_url, $notes, $file_format, $date_created, $date_updated, $user_id);
 
+  if (!$statement->fetch()){
+    return -1;
+  }
+
   $temp = $mysqli->prepare("SELECT role, value FROM roles WHERE object_id = ?");
-  $temp->bind_param("s", $id);
+  $temp->bind_param("s", $object_id);
   $temp->execute();
   $temp->bind_result($role, $value);
 
+  $roles = array();
+  while ($temp->fetch()){
+    $roles[$role] = $value;
+  }
+
+  $alt_titles = getObjectItemsFromTable($object_id,'alt_titles','alt_title');
+
+  $disciplines = getObjectItemsFromTable($object_id,'disciplines','discipline');
+
+  $genres = getObjectItemsFromTable($object_id,'genres','genre');
+
+  $languages = getObjectItemsFromTable($object_id,'languages','language');
+
+  $subjects = getObjectItemsFromTable($object_id,'subjects','subject');
+
+}
+
+function getObjectItemsFromTable($object_id,$table,$field){
+  $temp = $mysqli->prepare("SELECT ? FROM ? WHERE object_id = ?");
+  $temp->bind_param("sss", $field,$table,$object_id);
+  $temp->execute();
+  $temp->bind_result($value);
+
+  $values = array();
+  while ($temp->fetch()){
+    $values[] = $value;
+  }
 }
