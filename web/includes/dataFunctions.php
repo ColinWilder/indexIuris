@@ -210,9 +210,72 @@ function getObjectFromDB($object_id){
 
   $subjects = getObjectItemsFromTable($object_id,'subjects','subject');
 
+  $temp = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
+  $temp->bind_param("sss", $object_id);
+  $temp->execute();
+  $temp->bind_result($date_type,$date_human,$date_machine);
+
+  $dates = array();
+  while ($temp->fetch()){
+    $date = array(
+      "human" => $date_human,
+      "machine" => $date_machine,
+      "type" => $date_type
+    );
+    $dates[] = $date;
+  }
+
+  //parts
+  $temp = $mysqli->prepare("SELECT type, part_id FROM parts WHERE object_id = ? AND type='isPartOf'");
+  $temp->bind_param("s", $object_id);
+  $temp->execute();
+  $temp->bind_result($value);
+
+  $isPartOf = array();
+  while ($temp->fetch()){
+    $isPartOf[] = $value;
+  }
+  $temp = $mysqli->prepare("SELECT type, part_id FROM parts WHERE object_id = ? AND type='hasPart'");
+  $temp->bind_param("s", $object_id);
+  $temp->execute();
+  $temp->bind_result($value);
+
+  $hasPart = array();
+  while ($temp->fetch()){
+    $isPartOf[] = $value;
+  }
+
+  $object = array(
+    "custom_namespace" => $custom_namespace,
+    "rdf_about" => $rdf_about,
+    "archive" => $archive,
+    "title" => $title,
+    "type_original" => $type_original,
+    "type_digital" => $type_digital,
+    "type_content" => $type_content,
+    "url" => $url,
+    "origin" => $origin,
+    "provenance" => $provenance,
+    "place_composition" => $place_composition,
+    "shelfmark" => $shelfmark,
+    "if_freeculture" => $is_freeculture,
+    "full_text_url" => $full_text_url,
+    "full_text" => $full_text_plain,
+    "is_full_text" => $is_full_text,
+    "image_url" => $image_url,
+    "source" => $source,
+    "metadata_xml_url" => $metadata_xml_url,
+    "metadata_html_url" => $metadata_html_url,
+    "text_divisions" => $text_divisions,
+    "is_ocr" => $is_ocr,
+    "thumbnail_url" => $thumbnail_url,
+    "notes" => $notes,
+    "file_format" => $file_format,
+  );
 }
 
 function getObjectItemsFromTable($object_id,$table,$field){
+  global $mysqli;
   $temp = $mysqli->prepare("SELECT ? FROM ? WHERE object_id = ?");
   $temp->bind_param("sss", $field,$table,$object_id);
   $temp->execute();
