@@ -161,8 +161,6 @@
    <!-- ocr -->
    <field name="is_ocr" type="string" indexed="true" stored="true" required="true" multiValued="false" />
 
-   <!-- Thumbnail URL -->
-   <field name="thumbnail_url" type="string" indexed="true" stored="true" required="false" multiValued="false" />
 
    <!-- Contributing Institution -->   
    <field name="contributing_institution" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
@@ -254,7 +252,7 @@
    <field name="type_digital" type="string" indexed="true" stored="true" required="true" multiValued="false" />
    
    <!-- Date of Composition - Human readable -->
-   <field name="date_original_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
+   <field name="date_composition_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
    <!-- Date of Original Artifact - Human readable -->
    <field name="date_original_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />

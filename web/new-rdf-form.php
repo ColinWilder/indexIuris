@@ -460,9 +460,9 @@ if (!isset($_POST["submitted"])): ?>
           <!-- OPTIONAL FIELDS -->
           <div class="row">
           
-          <div class="col-xs-6">
+          <div class="col-xs-6"> 
           <h3 class="form-legend collapse-form-element">- Provenance <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group">
                 <label for="origin" class="control-label col-xs-12">Origin</label>
@@ -513,7 +513,7 @@ if (!isset($_POST["submitted"])): ?>
           
           <div class="col-xs-6">
           <h3 class="form-legend collapse-form-element">- Place of composition <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group">
                 <label for="placeComposition" class="control-label col-xs-12">Place of Composition</label>
@@ -556,7 +556,7 @@ if (!isset($_POST["submitted"])): ?>
           <div class="row">
           <div class="col-xs-6">
           <h3 class="form-legend collapse-form-element">- Shelfmark <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group">
                 <label for="shelfmark" class="control-label col-xs-12">Shelfmark</label>
@@ -616,7 +616,7 @@ if (!isset($_POST["submitted"])): ?>
 
           <div class="col-xs-6">
           <h3 class="form-legend collapse-form-element">- Source <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group">
                 <label for="source" class="control-label col-xs-2">Source</label>
@@ -659,7 +659,7 @@ if (!isset($_POST["submitted"])): ?>
           <div class="row">
           <div class="col-xs-6">
           <h3 class="form-legend collapse-form-element">- IsPartOf <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group" style="display: none;">
                 <label for="isPartOf" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>isPartOf</label>
@@ -713,7 +713,7 @@ if (!isset($_POST["submitted"])): ?>
 
           <div class="col-xs-6">
           <h3 class="form-legend collapse-form-element">- hasPart <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group" style="display: none;">
                 <label for="hasPart" class="control-label col-xs-2"><button type="button" class="close pull-left">x</button>hasPart</label>
@@ -770,7 +770,7 @@ if (!isset($_POST["submitted"])): ?>
           <div class="row">
           <div class="col-xs-6">
           <h3 class="form-legend collapse-form-element">- Divisions of the text <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group">
                 <label for="textDivisions" class="control-label col-xs-2">Divisions</label>
@@ -810,7 +810,7 @@ if (!isset($_POST["submitted"])): ?>
 
           <div class="col-xs-6">
           <h3 class="form-legend collapse-form-element">- Language <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group" style="display: none;">
                 <label for="language" class="control-label col-xs-4"><button type="button" class="close hide pull-left">x</button>Language</label>
@@ -855,7 +855,7 @@ if (!isset($_POST["submitted"])): ?>
           <div class="row">
           <div class="col-xs-6">
           <h3 class="form-legend collapse-form-element">- Metadata source code <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group">
                 <label for="metadataSourceCode" class="control-label col-xs-2">URL</label>
@@ -892,7 +892,7 @@ if (!isset($_POST["submitted"])): ?>
 
           <div class="col-xs-6">
           <h3 class="form-legend collapse-form-element">- OCR <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group">
                 <label class="control-label col-xs-5">Was this document generated with OCR?</label>
@@ -934,7 +934,7 @@ if (!isset($_POST["submitted"])): ?>
           </div>
 
           <h3 class="form-legend collapse-form-element">- Notes <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12">
               <div class="form-group">
                 <label for="notes" class="control-label col-xs-2">Notes</label>
@@ -975,7 +975,7 @@ if (!isset($_POST["submitted"])): ?>
 
       	  
       	  <h3 class="form-legend collapse-form-element">- Alternative title(s) <small>(optional)</small></h3>
-          <section class="form-group" style="display:none;">
+          <section class="form-group elem-hidden">
             <div class="col-xs-12 text-justify">
               <div class="form-group" style="display: none;">
                 <label for="altTitle" class="control-label col-xs-2"><button type="button" class="close hide pull-left">x</button>Alt Title</label>

@@ -510,3 +510,16 @@ function editSuccess() {
     $("#editSuccess").fadeOut();
   }, 1500);
 }
+
+
+$(".collapse-form-element").click(function(e){
+  var formElem = $(this).parent().find("section")
+  if (formElem.hasClass("elem-hidden")){
+    formElem.fadeIn();
+    formElem.removeClass("elem-hidden")
+  }
+  else {
+    formElem.fadeOut();
+    formElem.addClass("elem-hidden");
+  }
+});
