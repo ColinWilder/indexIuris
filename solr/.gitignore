@@ -4,3 +4,4 @@ server/logs
 server/logs/solr_gc.log
 server/logs/solr.log
 server/solr/duss-indexing/data
+server/solr/indexiuris/data

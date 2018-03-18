@@ -211,7 +211,7 @@ function getObjectFromDB($object_id){
   $subjects = getObjectItemsFromTable($object_id,'subjects','subject');
 
   $temp = $mysqli->prepare("SELECT type, machine_date, human_date FROM dates WHERE object_id = ?");
-  $temp->bind_param("sss", $object_id);
+  $temp->bind_param("s", $object_id);
   $temp->execute();
   $temp->bind_result($date_type,$date_human,$date_machine);
 
@@ -229,7 +229,7 @@ function getObjectFromDB($object_id){
   $temp = $mysqli->prepare("SELECT type, part_id FROM parts WHERE object_id = ? AND type='isPartOf'");
   $temp->bind_param("s", $object_id);
   $temp->execute();
-  $temp->bind_result($value);
+  $temp->bind_result($part_type,$value);
 
   $isPartOf = array();
   while ($temp->fetch()){
@@ -238,7 +238,7 @@ function getObjectFromDB($object_id){
   $temp = $mysqli->prepare("SELECT type, part_id FROM parts WHERE object_id = ? AND type='hasPart'");
   $temp->bind_param("s", $object_id);
   $temp->execute();
-  $temp->bind_result($value);
+  $temp->bind_result($part_type,$value);
 
   $hasPart = array();
   while ($temp->fetch()){
@@ -256,9 +256,9 @@ function getObjectFromDB($object_id){
     "url" => $url,
     "origin" => $origin,
     "provenance" => $provenance,
-    "place_composition" => $place_composition,
+    "place_of_composition" => $place_composition,
     "shelfmark" => $shelfmark,
-    "if_freeculture" => $is_freeculture,
+    "is_freeculture" => $is_freeculture,
     "full_text_url" => $full_text_url,
     "full_text" => $full_text_plain,
     "is_full_text" => $is_full_text,
@@ -272,12 +272,13 @@ function getObjectFromDB($object_id){
     "notes" => $notes,
     "file_format" => $file_format,
   );
+  return $object;
 }
 
 function getObjectItemsFromTable($object_id,$table,$field){
   global $mysqli;
-  $temp = $mysqli->prepare("SELECT ? FROM ? WHERE object_id = ?");
-  $temp->bind_param("sss", $field,$table,$object_id);
+  $temp = $mysqli->prepare("SELECT ".$field." FROM ".$table." WHERE object_id = ?");
+  $temp->bind_param("s", $object_id);
   $temp->execute();
   $temp->bind_result($value);
 
@@ -285,4 +286,17 @@ function getObjectItemsFromTable($object_id,$table,$field){
   while ($temp->fetch()){
     $values[] = $value;
   }
+}
+
+function getAllObjectIds(){
+  global $mysqli;
+  $temp = $mysqli->prepare("SELECT id FROM objects");
+  $temp->execute();
+  $temp->bind_result($value);
+
+  $values = array();
+  while ($temp->fetch()){
+    $values[] = $value;
+  }
+  return $values;
 }

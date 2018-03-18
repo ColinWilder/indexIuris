@@ -218,7 +218,7 @@
    <field name="language" type="string" indexed="true" stored="true" required="false" multiValued="true" />
    <field name="language_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
    <copyField source="language"    dest="language_facet"/> 
-
+ 
    <!-- Is Part Of -->
    <field name="is_part_of" type="string" indexed="true" stored="true" required="false" multiValued="true" />
 
@@ -255,7 +255,7 @@
    <field name="type_content" type="string" indexed="true" stored="true" required="true" multiValued="false" />
    
    <!-- Type of Digital artifact -->
-   <field name="type_digital" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+   <field name="type_digital" type="string" indexed="true" stored="true" required="false" multiValued="false" />
    
    <!-- Date of Composition - Human readable -->
    <field name="date_composition_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
@@ -266,8 +266,10 @@
    <!-- Date of Digital Surrogate - Human readable -->
    <field name="date_digital_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
+   <!-- Notes -->
 
-   
+   <field name="notes" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="false" />
+
    
 
    <!-- Dynamic field definitions allow using convention over configuration

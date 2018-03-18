@@ -17,17 +17,24 @@ require_once('config.php');
 
 //TODO: add error checking!!!
 function parseDate($dateString){
+  $dateString = trim($dateString);
   $parts = explode('-',$dateString);
-  if (sizeof($parts)==1) {
+  if (sizeof($parts)==1) {//format is yyyy
     return array((int)$parts[0]);
   }
   else if (sizeof($parts)==2){
+    if (strlen($parts[1])==2) { //format is yyyy-mm
+      return array((int)$parts[0]);
+    }
     $years = array();
-    while ($parts[0]<=$parts[1]){
+    while ($parts[0]<=$parts[1]){//format is yyyy-yyyy
       $years[] = $parts[0];
       $parts[0]++;
     }
     return $years;
+  }
+  else if (sizeof($parts)==3){ //format is yyyy-mm-dd
+    return array((int)$parts[0]);
   }
   else return 0;
 }
