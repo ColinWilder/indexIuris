@@ -120,12 +120,6 @@
    
    <!-- Required Fields -->
 
-   <!-- Custom Namespace -->
-   <field name="custom_namespace" type="string" indexed="true" stored="true" required="true" multiValued="false" />
-
-   <!-- rdf_about (ie. url) -->
-   <field name="rdf_about" type="string" indexed="true" stored="true" required="true" multiValued="false" />
-
    <!-- Archive -->
    <field name="archive" type="text_general" indexed="true" stored="true" required="true" multiValued="false" />
    <field name="archive_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
@@ -137,37 +131,14 @@
    <!-- URL -->
    <field name="url" type="string" indexed="true" stored="true" required="true" multiValued="false" />
 
-   <!-- Origin -->
-   <field name="origin" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+   <!-- Type of Original Artifact -->
+   <field name="type_original" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
 
-   <!-- Provenance -->
-   <field name="provenance" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
-
-   <!-- Place of Composition -->
-   <field name="place_of_composition" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
-  
-   <!-- Source/Shelfmark -->
-   <field name="shelfmark" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-
-   <!-- freeculture -->
-   <field name="is_freeculture" type="string" indexed="true" stored="true" required="true" multiValued="false" />
-
-   <!-- source -->
-   <field name="source" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
-
-   <!-- Text divisions -->
-   <field name="text_divisions" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
-
-   <!-- ocr -->
-   <field name="is_ocr" type="string" indexed="true" stored="true" required="true" multiValued="false" />
-
-
-   <!-- Contributing Institution   
-   <field name="contributing_institution" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
-   <field name="contributing_institution_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
-   <copyField source="contributing_institution"    dest="contributing_institution_facet"/>-->
+   <!-- Type of Content -->
+   <field name="type_content" type="string" indexed="true" stored="true" required="true" multiValued="false" />
    
-   
+   <!-- Type of Digital artifact -->
+   <field name="type_digital" type="string" indexed="true" stored="true" required="false" multiValued="false" />
    <!-- Roles Dynamic field
    This field is used for all "role" fields
    Examples:
@@ -180,20 +151,60 @@
    <field name="role_ALL"  type="string" indexed="true"  stored="true" multiValued="true"/>
    <copyField source="role_*"    dest="role_ALL"/>
    
+   <!-- Genre -->
+   <field name="genre" type="string" indexed="true" stored="true" required="false" multiValued="true" />
+   <field name="genre_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
+   <copyField source="genre"    dest="genre_facet"/>
+
+   <!-- Date human -->
+   <field name="date_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
-   <!-- Date of original artifact 
-   These fields are used for date searching.
-   To indicate a date range specify the beginning and end dates.
-   To indicate a single date, use the same value for both.
-   -->
-   <!-- Date range begin -->
-   <field name="year_begin" type="int" indexed="true" stored="true" multiValued="false"/>
-   <field name="month_begin" type="int" indexed="true" stored="true" multiValued="false"/>
-   <field name="day_begin" type="int" indexed="true" stored="true" multiValued="false"/>
-   <!-- Date range end -->
-   <field name="year_end" type="int" indexed="true" stored="true" multiValued="false"/>
-   <field name="month_end" type="int" indexed="true" stored="true" multiValued="false"/>
-   <field name="day_end" type="int" indexed="true" stored="true" multiValued="false"/>
+   <!-- Date digital -->
+   <field name="date_digital" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
+
+   <!-- Provenance -->
+   <field name="provenance" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+
+   <!-- Origin -->
+   <field name="origin" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+
+   <!-- Place of Composition -->
+   <field name="place_of_composition" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+
+   <!-- Source/Shelfmark -->
+   <field name="shelfmark" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
+
+   <!-- freeculture -->
+   <field name="is_freeculture" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+
+   <!-- Full Text -->
+   <field name="full_text" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
+
+   <!-- Alternative Title(s) -->
+   <field name="alternative_title" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="true" />
+
+   <!-- source -->
+   <field name="source" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+
+   <!-- subject -->
+   <field name="subject" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+
+
+
+
+
+   <!-- Text divisions -->
+   <field name="text_divisions" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+
+   <!-- ocr -->
+   <field name="is_ocr" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+
+
+   <!-- Contributing Institution   
+   <field name="contributing_institution" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
+   <field name="contributing_institution_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
+   <copyField source="contributing_institution"    dest="contributing_institution_facet"/>-->
+
    <!-- years field - used for date range searching 
    Includes all the years >= year_begin && <= year_end
    -->
@@ -205,10 +216,7 @@
    <!-- File Format -->
    <field name="file_format" type="string" indexed="true" stored="true" required="true" multiValued="false" />
    
-   <!-- Genre -->
-   <field name="genre" type="string" indexed="true" stored="true" required="false" multiValued="true" />
-   <field name="genre_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
-   <copyField source="genre"    dest="genre_facet"/>
+
    <!-- Discipline -->
    <field name="discipline" type="string" indexed="true" stored="true" required="false" multiValued="true" />
    <field name="discipline_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
@@ -225,13 +233,7 @@
    <!-- Has Part -->
    <field name="has_part" type="string" indexed="true" stored="true" required="false" multiValued="true" />    
    
-   <!-- Alternative Title(s) -->
-   <field name="alternative_title" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="true" />
 
-   <!-- LC Subject Headings -->
-   <field name="subject_heading" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="true" />
-   <field name="subject_heading_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
-   <copyField source="subject_heading"    dest="subject_heading_facet"/>
    
    <!-- Thumbnail URL -->
    <field name="thumbnail_url" type="string" indexed="true" stored="true" required="false" multiValued="false" />
@@ -239,36 +241,18 @@
    <!-- Description 
    <field name="description" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />-->
 
-   <!-- Full Text -->
-   <field name="full_text" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
-  
-   <!-- is Full Text -->
-   <field name="is_full_text" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
-   <!-- Full Text Url-->
-   <field name="full_text_url" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
-   <!-- Type of Original Artifact -->
-   <field name="type_original" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
 
-   <!-- Type of Content -->
-   <field name="type_content" type="string" indexed="true" stored="true" required="true" multiValued="false" />
-   
-   <!-- Type of Digital artifact -->
-   <field name="type_digital" type="string" indexed="true" stored="true" required="false" multiValued="false" />
-   
-   <!-- Date of Composition - Human readable -->
-   <field name="date_composition_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
-   
-   <!-- Date of Original Artifact - Human readable -->
-   <field name="date_original_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
-   
-   <!-- Date of Digital Surrogate - Human readable -->
-   <field name="date_digital_human" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
    
    <!-- Notes -->
 
    <field name="notes" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="false" />
+
+    <!-- Consgtrjslfkj -->
+   <field name="language" type="string" indexed="true" stored="true" required="false" multiValued="true" />
+   <field name="language_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
+   <copyField source="language"    dest="language_facet"/> 
 
    
 
