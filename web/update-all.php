@@ -39,9 +39,19 @@ if (isSuper()):
             unset($doc['metadata_xml_url']);
             unset($doc['metadata_html_url']);
             unset($doc['image_url']);
+            unset($doc['custom_namespace']);
+            unset($doc['rdf_about']);
+            unset($doc['full_text_url']);
+            unset($doc['is_full_text']);
+            unset($doc['is_ocr']);
+            unset($doc['thumbnail_url']);
+            unset($doc['file_format']);
+
+
             var_dump($doc);
             print(indexDocument($doc)." \n");
           }
+          //delete_all();
           print(commitIndex()." - ");
         ?>
         </pre>
@@ -53,6 +63,6 @@ if (isSuper()):
 <?php require "includes/footer.php"; 
 else:?>
 <h1 class="text-danger">You do not have permission to access this page.</h1>
-<?
+<?php
 endif;
 ?>

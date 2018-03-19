@@ -1,0 +1,40 @@
+<div class="row text-center">
+		<div class="col-md-10 center-block">
+			<p>Index Iuris - Search</p>
+		</div>
+	</div>
+	<div class="row text-center">
+		<div class="col-md-6 center-block">
+			<form class="form-horizontal" id="home-search" name="home-search" method="GET" action="search">
+	        <div class="row form-group search-row">
+				<div class="col-xs-1 nopadding">
+				</div>
+				<div class="col-xs-6 nopadding">
+					<input type="text" name="q" class="form-control" placeholder="Search our projects" value="{{query}}">
+				</div>
+				<div class="col-xs-4 nopadding">
+					<input type="hidden" value="all" name="f">
+				</div>
+				<div class="col-xs-1 nopadding">
+				</div>
+				<div class="col-xs-12"><hr></div>
+			</div>			
+			<!--<div class="row form-group">
+					<button type="button" class="btn btn-default" id="addRow">Add another search term</button>
+			</div>-->
+			
+			<div class="row">
+				<div class="col-xs-6">
+				</div>
+				<div class="col-xs-6">
+					<input type="submit" class="btn btn-primary" value="Search">
+					<input type="hidden" name="rows" value="20">
+					<input type="hidden" name="start" value="0">
+				</div>
+				
+			</div>
+			</form>
+		</div>
+	</div>
+	<br>
+	<hr> 

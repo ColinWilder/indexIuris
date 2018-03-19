@@ -9,72 +9,50 @@ search_result_rows = 20
 solr_results_highlight_tag = 'mark'
 
 solr_field_names ={
-#"custom_namespace" : {"field_title" : "Digital Collection",
-#	"display" : "brief"},
-#"rdf_about" : {"field_title" : "Contributing Institution",
-#	"display" : "brief"},
-"archive" : {"field_title" : "Title",
+"archive" : {"field_title" : "Archive",
 	"display" : "brief"},
 "title" : {"field_title" : "Title",
 	"display" : "brief"},
-"url" : {"field_title" : "Title",
+"url" : {"field_title" : "URL",
 	"display" : "brief"},
-"type_original" : {"field_title" : "Title",
+"type_original" : {"field_title" : "Type of Original Artifact",
 	"display" : "brief"},
 "type_content" : {"field_title" : "Type of Content",
 	"display" : "brief"},
 "type_digital" : {"field_title" : "Type of Digital Surrogate",
 	"display" : "full"},
-"role_ALL" : {"field_title" : "Title",
+"role_ALL" : {"field_title" : "Role",
 	"display" : "brief"},
-"genre" : {"field_title" : "Title",
+"genre" : {"field_title" : "Genre",
 	"display" : "brief"},
-"date_human" : {"field_title" : "Title",
-	"display" : "brief"},
-"date_digital" : {"field_title" : "Title",
-	"display" : "brief"},
-"provenance" : {"field_title" : "Title",
-	"display" : "brief"},
-"place_of_composition" : {"field_title" : "Title",
-	"display" : "brief"},
-"origin" : {"field_title" : "Title",
-	"display" : "brief"},
-"shelfmark" : {"field_title" : "Title",
-	"display" : "brief"},
-"is_freeculture" : {"field_title" : "Title",
-	"display" : "brief"},
-"full_text" : {"field_title" : "Title",
-	"display" : "brief"},
-"alternative_title" : {"field_title" : "Title",
-	"display" : "brief"},
-"source" : {"field_title" : "Title",
-	"display" : "brief"},
-
-
-	
-"text_divisions" : {"field_title" : "Title",
-	"display" : "brief"},
-"is_ocr" : {"field_title" : "Title",
-	"display" : "brief"},
-
-"file_format" : {"field_title" : "Title",
-	"display" : "brief"},
-
-"discipline" : {"field_title" : "Title",
-	"display" : "brief"},
-"language" : {"field_title" : "Title",
-	"display" : "brief"},
-
-"thumbnail_url" : {"field_title" : "Thumbnail URL",
+"date_human" : {"field_title" : "Human Readable Date",
 	"display" : "full"},
-
-
-"file_format" : {"field_title" : "File Format",
+"date_digital" : {"field_title" : "Machine Date",
+	"display" : "full"},
+"provenance" : {"field_title" : "Provenance",
+	"display" : "full"},
+"place_of_composition" : {"field_title" : "Place of Composition",
+	"display" : "full"},
+"origin" : {"field_title" : "Origin",
+	"display" : "full"},
+"shelfmark" : {"field_title" : "Shelfmark",
+	"display" : "full"},
+"is_freeculture" : {"field_title" : "Freeculture",
+	"display" : "full"},
+"full_text" : {"field_title" : "Full Text",
 	"display" : "full"},
 "alternative_title" : {"field_title" : "Alternative Title",
+	"display" : "brief"},
+"source" : {"field_title" : "Source",
+	"display" : "full"},
+"text_divisions" : {"field_title" : "Divisions of the Text",
+	"display" : "full"},
+"discipline" : {"field_title" : "Discipline",
+	"display" : "full"},
+"language" : {"field_title" : "Language",
 	"display" : "full"},
 "notes" : {"field_title" : "Notes",
-	"display" : "full"}
+	"display" : "brief"}
 }
 
 brief_display_fields = []
@@ -83,15 +61,19 @@ for name,info in solr_field_names.items():
 		brief_display_fields.append(name)
 
 facet_fields = {
-		"archive_facet" : "Digital Collection",
-		"contributing_institution_facet" : "Contributing Institution",
-		"subject_heading_facet" : "LC Subject Headings",
-		"type_content" : "Type of Content",
-		"file_format" : "File Format",
-		"language" : "Language"
+		"archive_facet" : "Archive",
+		"type_content_facet" : "Type of Content",
+		"genre_facet" : "Genre",
+		"discipline_facet" : "Discipline",
+		"language_facet" : "Language"
 		#"date"
 }
 
+search_fields = set()
+for key,val in solr_field_names.items():
+	search_fields.add(key)
+
+"""
 search_fields = {
 		"contributing_institution",
 		"url",
@@ -122,7 +104,7 @@ advanced_search_fields = {
 		"subject" : "LC Subject Headings",
 		"role" : "Roles (authors, editors, etc.)"
 }
-
+"""
 
 import re, cgi
 

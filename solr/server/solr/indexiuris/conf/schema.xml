@@ -136,6 +136,8 @@
 
    <!-- Type of Content -->
    <field name="type_content" type="string" indexed="true" stored="true" required="true" multiValued="false" />
+   <field name="type_content_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
+   <copyField source="type_content"    dest="type_content_facet"/>
    
    <!-- Type of Digital artifact -->
    <field name="type_digital" type="string" indexed="true" stored="true" required="false" multiValued="false" />
@@ -184,21 +186,15 @@
    <field name="alternative_title" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="true" />
 
    <!-- source -->
-   <field name="source" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+   <field name="source" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="false" />
 
    <!-- subject -->
-   <field name="subject" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
-
-
-
-
+   <field name="subject" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="false" />
 
    <!-- Text divisions -->
-   <field name="text_divisions" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />
+   <field name="text_divisions" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="false" />
 
-   <!-- ocr -->
-   <field name="is_ocr" type="string" indexed="true" stored="true" required="true" multiValued="false" />
-
+   
 
    <!-- Contributing Institution   
    <field name="contributing_institution" type="text_general" indexed="true" stored="true" required="false" multiValued="false" />
@@ -210,12 +206,6 @@
    -->
    <field name="years" type="int" indexed="true" stored="true" multiValued="true"/>
 
-   <!--Date of digital surrogate -->
-   <field name="date_digital" type="text_general" indexed="true" stored="true" multiValued="false"/>
-   
-   <!-- File Format -->
-   <field name="file_format" type="string" indexed="true" stored="true" required="true" multiValued="false" />
-   
 
    <!-- Discipline -->
    <field name="discipline" type="string" indexed="true" stored="true" required="false" multiValued="true" />
@@ -227,32 +217,14 @@
    <field name="language_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
    <copyField source="language"    dest="language_facet"/> 
  
-   <!-- Is Part Of -->
-   <field name="is_part_of" type="string" indexed="true" stored="true" required="false" multiValued="true" />
 
-   <!-- Has Part -->
-   <field name="has_part" type="string" indexed="true" stored="true" required="false" multiValued="true" />    
-   
-
-   
-   <!-- Thumbnail URL -->
-   <field name="thumbnail_url" type="string" indexed="true" stored="true" required="false" multiValued="false" />
-   
-   <!-- Description 
-   <field name="description" type="text_en_splitting" indexed="true" stored="true" required="true" multiValued="false" />-->
-
-   
-   
 
    
    <!-- Notes -->
 
    <field name="notes" type="text_en_splitting" indexed="true" stored="true" required="false" multiValued="false" />
 
-    <!-- Consgtrjslfkj -->
-   <field name="language" type="string" indexed="true" stored="true" required="false" multiValued="true" />
-   <field name="language_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
-   <copyField source="language"    dest="language_facet"/> 
+
 
    
 

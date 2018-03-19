@@ -1,0 +1,121 @@
+
+<h3 class="text-right">{{nav_string}}
+</h3>
+<p class="text-right">
+{% if start>0 %}
+  <a href="{{prev_query}}" class="btn btn-default">Previous</a>
+{% endif %}
+{% if numFound>(start+rows) %}
+  <a href="{{next_query}}" class="btn btn-default">Next</a>
+{% endif %}
+</p>
+
+<div class="row">
+    <div class="col-xs-12 col-md-3">
+            <div class="col-xs-12"><h4>Facets:</h4>
+                <div class="panel-group" id="accordion">
+      {% for facet in facets %}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            {% if facet[1][0]['expanded']==True %}
+            <a class="accordion-toggle accordion-opened" data-toggle="collapse" href="#collapse{{loop.index}}">{{facet[0]}}&nbsp;</a>
+            {% else %}
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapse{{loop.index}}">{{facet[0]}}&nbsp;</a>
+            {% endif %}
+          </h4>
+        </div>
+        {% if facet[1][0]['expanded']==True %}
+        <div id="collapse{{loop.index}}" class="panel-collapse collapse in">
+        {% else %}
+        <div id="collapse{{loop.index}}" class="panel-collapse collapse">
+        {% endif %}
+          <div class="panel-body">
+            {% for item in facet[1] %}
+              <a href="{{item['url']}}">
+                {% if item['title'] == '' %}
+                None
+                {% else %}
+                {{item['title']}}
+                {% endif %}  
+                (<small><strong>{{item['count']}}</strong></small>)</a><br>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+        {% endfor %}
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <span class="accordion-toggle accordion-opened">
+            Date range&nbsp;</span>
+          </h4>
+        </div>
+        <div id="collapsez" class="panel-collapse collapse in">
+          <div class="panel-body">
+            <p>
+             <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+            </p>
+            <div id="slider-range"></div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+            </div>
+    </div><!-- facets column-->
+
+
+  <div class="col-xs-12 col-md-9" id="search-results-column">
+<div class="panel-group" id="accordion">
+  {% for result in search_results %}
+  <div class="panel panel-default">
+    <div class="panel-heading container-fluid panel-heading-results">
+      <div class="col-xs-11">
+        <h3><a class="results-title" target="_blank" href="{{result['url'][0]}}">{{result['title'][0]|safe}}</a></h3>
+      </div>
+			<div class="col-xs-8 col-md-2 pull-left">
+							</div>
+			<div class="col-xs-12 col-md-10 pull-right">
+				<table>
+          {% for field in brief_display_fields %}
+            {% if field in result %}
+              <tr>
+              <td style="vertical-align: top; padding-right: 2em;">
+                <strong>
+                  {% if result[field]|length>1 %}
+                    {{solr_field_names[field]['field_title']}}s:
+                  {% else %}
+                    {{solr_field_names[field]['field_title']}}:
+                  {% endif %}
+                </strong>
+              </td>
+                <td>
+                {% for item in result[field] %}
+                  {{item|safe}}<br>
+                {% endfor %}
+                </td>
+              </tr>
+            {% endif %}
+          {% endfor %}
+		    </table>
+		  </div>
+    </div>
+  </div>
+  {% endfor %}
+</div><!-- #accordion -->
+</div> <!-- search-results-column -->
+</div>
+<h3 class="text-right">{{nav_string}}
+  </h3>
+  <p class="text-right">
+  {% if start>0 %}
+    <a href="{{prev_query}}" class="btn btn-default">Previous</a>
+  {% endif %}
+  {% if numFound>(start+rows) %}
+    <a href="{{next_query}}" class="btn btn-default">Next</a>
+  {% endif %}
+  </p>
+</div> <!-- row -->
+

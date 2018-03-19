@@ -20,8 +20,10 @@ require_once "includes/solr.php";
       </div>
     </div>
   </div>
-
-  <?php require_once "includes/search-results.php";?>
+<?php 
+$res = file_get_contents("http://10.0.0.111:5000".$_SERVER['REQUEST_URI']);
+print ($res);
+?>
 </div>
 
 <?php require "includes/footer.php"; ?>
