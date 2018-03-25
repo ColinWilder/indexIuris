@@ -66,7 +66,8 @@ def search():
                     "expanded": True if f in filter_queries else False,
                     "title":title,
                     "count":num,
-                    "url": build_facet_filter_query(unsafe_query,title,f)
+                    "url": build_facet_filter_query(unsafe_query,title,f),
+                    "breadcrumb":build_facet_breadcrumb_query(unsafe_query,title,f)
                     #"name":f
                 }
                 if f in filter_queries and filter_queries[f] == title:
@@ -197,6 +198,29 @@ def build_facet_filter_query(current_query,query,field):
         fqs  = fqs + q + ":\"" + f.replace("\"","") + "\";"
     url = url + fqs
     return url
+
+def build_facet_breadcrumb_query(current_query,query,field):
+    current_query = copy.deepcopy(current_query)
+    #pprint(current_query)
+    if 'fq' in current_query:
+        fq = current_query['fq']
+        fq = {key:val for key,val in fq.items() if (key!=field and val!=query)}
+        #pprint (fq)
+        current_query['fq'] = fq
+    #else:
+    #    current_query['fq'] = {field:query}
+    url = "search?q="+quote_plus(current_query['q'])
+    url = url + "&f=" + quote_plus(current_query['f'])
+    url = url + "&start=" + quote_plus(current_query['start'])
+    url = url + "&rows=" + quote_plus(current_query['rows'])
+    fqs=''
+    if 'fq' in current_query:
+        fqs = "&fq="
+        for q,f in current_query['fq'].items():
+            fqs  = fqs + q + ":\"" + f.replace("\"","") + "\";"
+    url = url + fqs
+    return url
+
 @app.route('/simplesearch')
 def simple_search():
     query = request.args.get('q')
