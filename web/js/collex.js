@@ -513,7 +513,7 @@ function editSuccess() {
 
 
 $(".collapse-form-element").click(function(e){
-  var formElem = $(this).parent().find("section")
+  /*var formElem = $(this).parent().find("section")
   if (formElem.hasClass("elem-hidden")){
     formElem.fadeIn();
     formElem.removeClass("elem-hidden")
@@ -521,5 +521,10 @@ $(".collapse-form-element").click(function(e){
   else {
     formElem.fadeOut();
     formElem.addClass("elem-hidden");
-  }
+  }*/
+});
+
+
+$(".accordion-toggle").click(function (e) {
+	$(this).toggleClass("accordion-opened");
 });

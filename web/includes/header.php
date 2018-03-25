@@ -16,11 +16,6 @@ if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"],
   exit(json_encode(sendContactMail($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"], $_POST["receiver"])));
 }
 
-/*
- * Note: Do not copy this file over on top of the current header file on Lichen.
- * There is a Google Analytics script installed on the server but not locally.
- */
-
 ?><!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -36,7 +31,7 @@ if (isset($_POST["name"], $_POST["email"], $_POST["message"], $_POST["captcha"],
     <link rel="stylesheet" href="css/<?php print $style; ?>">
   <?php endforeach; ?>
 
-  <script src='https://www.google.com/recaptcha/api.js'></script>
+  <!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
 </head>
 <body>
   <noscript>

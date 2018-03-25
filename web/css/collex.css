@@ -158,3 +158,36 @@ button.close:hover { color: #000000; }
 .elem-hidden {
   display: none;
 }
+
+
+
+/* these next two styles set the right or down 
+arrow according to whether a facet is open
+or collapsed. Also check duss-search.js for the
+functions that toggle the accordion-opened class
+*/
+.accordion-toggle:after {
+  font-family: 'FontAwesome';
+  content: "+";    
+  /*float: right;*/
+}
+.accordion-opened.accordion-toggle:after {    
+  content: "-";    
+}
+
+
+/*search results */
+
+#search-results-column .panel-heading{
+  background-color: #ffffff !important;
+}
+
+#search-results-column strong{
+  color: black !important;
+}
+#search-results-column mark{
+  background-color: yellow !important;
+}
+#search-results-column .result-value{
+  color: black !important;
+}

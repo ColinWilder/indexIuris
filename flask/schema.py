@@ -63,6 +63,7 @@ for name,info in solr_field_names.items():
 facet_fields = {
 		"archive_facet" : "Archive",
 		"type_content_facet" : "Type of Content",
+		"type_original_facet" : "Type of Original Artifact",
 		"genre_facet" : "Genre",
 		"discipline_facet" : "Discipline",
 		"language_facet" : "Language"

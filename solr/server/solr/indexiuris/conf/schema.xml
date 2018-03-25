@@ -133,6 +133,8 @@
 
    <!-- Type of Original Artifact -->
    <field name="type_original" type="text_en" indexed="true" stored="true" required="false" multiValued="false" />
+   <field name="type_original_facet"  type="string" indexed="true"  stored="true" multiValued="true"/>
+   <copyField source="type_original"    dest="type_original_facet"/>
 
    <!-- Type of Content -->
    <field name="type_content" type="string" indexed="true" stored="true" required="true" multiValued="false" />

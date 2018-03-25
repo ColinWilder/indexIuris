@@ -39,11 +39,14 @@ def search():
     #check for missing values and set to default if missing
     if unsafe_query['q']==None or unsafe_query['f']==None:
         return render_template("search.html")
+    if unsafe_query['q']=='':
+        unsafe_query['q']='*'
+    if unsafe_query['f']=='':
+        unsafe_query['f']='all'
     unsafe_query['start'] = unsafe_query['start'] if not unsafe_query['start']==None else "0"
     unsafe_query['rows'] = unsafe_query['rows'] if not unsafe_query['rows']==None else "20"
     r = requests.post('http://localhost:5001/searchapi',json=unsafe_query)
     print(r.status_code)
-    
     print(r.text)
     search_results = json.loads(r.text)
     pprint(search_results)
@@ -100,12 +103,17 @@ def search():
     new_results = []
     for doc in results:
         new_doc = {}
+        has_value=False
         for key,item in doc.items():
             if isinstance(item,str):
-                new_doc[key] = [item]
+                if not item=="":
+                    has_value=True
+                    new_doc[key] = [item]
             else:
+                has_value=True
                 new_doc[key] = item
-        new_results.append(new_doc)
+        if has_value:
+            new_results.append(new_doc)
     pprint(new_results)
 
     #build nav_string
@@ -363,7 +371,6 @@ def searchapi():
     pprint(search_query)
     try:
         solr_response = get_solr_results (search_query)
-        print("\n\n\n\n\n\n\nHIHIHIHIHIH")
         pprint(solr_response)
         if not solr_response['responseHeader']['status'] ==0:
             response.set_data(json_encode({'error':'Unspecified solr. Please contact a system administrator for assistance.'}))
