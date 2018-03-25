@@ -126,6 +126,8 @@ def search():
         nav_string += str(numFound)
     else:
         nav_string += str(start+rows) + " of " + str(numFound)
+    if numFound==0:
+        nav_string = "No results"
     
     #build prev and next queries
     prev_query,next_query = build_nav_queries(unsafe_query,start,rows,numFound)

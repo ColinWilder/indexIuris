@@ -300,3 +300,22 @@ function getAllObjectIds(){
   }
   return $values;
 }
+
+function permanentlyDeleteObject($object_id){
+
+  deleteOneValue($object_id,"alt_titles");
+  deleteOneValue($object_id,"datess");
+  deleteOneValue($object_id,"disciplines");
+  deleteOneValue($object_id,"genres");
+  deleteOneValue($object_id,"languages");
+  deleteOneValue($object_id,"parts");
+  deleteOneValue($object_id,"roles");
+  deleteOneValue($object_id,"subjects");
+
+
+  global $mysqli;
+
+  $statement = $mysqli->prepare("DELETE FROM objects WHERE id = ?");
+  $statement->bind_param("i", $id);
+  $statement->execute();
+}

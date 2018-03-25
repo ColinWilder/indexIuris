@@ -23,12 +23,19 @@ $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type_o
   <?php if ($user_id == $_SESSION["user_id"] || isSuper()): ?>
     <div class="container">
       <div class="row page-header">
-        <div class="col-xs-10">
+        <div class="col-xs-9">
           <h1><?php print $title; ?></h1>
         </div>
-        <div class="col-xs-2 text-center submission-tools">
+        <div class="col-xs-3 text-center submission-tools">
           <a href="edit?id=<?php print $id; ?>" class="btn btn-default">Edit</a>
           <a href="rdf?id=<?php print $id; ?>" class="btn btn-default">RDF</a>
+          <?php if (isSuper()):?>
+          <hr>
+            <form action="delete" method="POST" onsubmit="return confirm('Are you sure you want to PERMANENTLY delete this record?')">
+              <input type="hidden" value="<?php print $id;?>">
+              <input type="submit" value="Delete" class="btn btn-danger"> 
+            </form>
+          <?php endif;?>
         </div>
       </div>
 
