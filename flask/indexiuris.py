@@ -46,8 +46,9 @@ def search():
     unsafe_query['start'] = unsafe_query['start'] if not unsafe_query['start']==None else "0"
     unsafe_query['rows'] = unsafe_query['rows'] if not unsafe_query['rows']==None else "20"
     r = requests.post(search_url+'/searchapi',json=unsafe_query)
-    print(r.status_code)
-    print(r.text)
+    print(search_url+'/searchapi')
+    #print(r.status_code)
+    #print(r.text)
     search_results = json.loads(r.text)
     pprint(search_results)
     facets = {}
@@ -89,7 +90,7 @@ def search():
 
     results = search_results['response']['docs']
     highlighting = search_results['highlighting']
-    pprint(highlighting)
+    #pprint(highlighting)
     new_results = []
     for doc in results:
         if doc['url'] in highlighting:
@@ -115,7 +116,7 @@ def search():
                 new_doc[key] = item
         if has_value:
             new_results.append(new_doc)
-    pprint(new_results)
+    #pprint(new_results)
 
     #build nav_string
     start = int(search_results['responseHeader']['params']['start'])
