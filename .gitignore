@@ -4,3 +4,4 @@ solr/server/logs/solr_gc.log
 *.log
 solr/bin/solr-8983.pid
 web/includes/config.php
+flask/config.py

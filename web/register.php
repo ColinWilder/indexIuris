@@ -5,10 +5,10 @@
  */
 
 $dialog = "";
-if (isset($_POST["username"], $_POST["password1"], $_POST["password2"], $_POST["email"], $_POST["g-recaptcha-response"])) {
+if (isset($_POST["username"], $_POST["password1"], $_POST["password2"], $_POST["email"]/*, $_POST["g-recaptcha-response"]*/)) {
   require_once "includes/userFunctions.php";
 
-  $dialog = register($_POST["username"], $_POST["password1"], $_POST["password2"], $_POST["email"], $_POST["g-recaptcha-response"]);
+$dialog = register($_POST["username"], $_POST["password1"], $_POST["password2"], $_POST["email"]/*, $_POST["g-recaptcha-response"]*/);
 
   if (strcmp($dialog, "Success") === 0) {
     header("Location: account");

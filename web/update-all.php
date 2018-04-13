@@ -20,8 +20,14 @@ if (isSuper()):
         <h1>Update all</h1>
         <pre>
         <?php 
+          //delete from solr
+          delete_all();
+
+          //get current objects from db
           $object_ids = getAllObjectIds();
           var_dump($object_ids);
+          flush();
+
           foreach ($object_ids as $object_id){
             $doc = getObjectFromDB($object_id);
             $new_doc = array();
@@ -48,8 +54,9 @@ if (isSuper()):
             unset($doc['file_format']);
 
 
-            var_dump($doc);
-            print(indexDocument($doc)." \n");
+            //var_dump($doc);
+            //print(
+            indexDocument($doc);//." \n");
           }
           //delete_all();
           print(commitIndex()." - ");

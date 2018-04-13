@@ -2,7 +2,7 @@
 
 solr_core_name = 'indexiuris'
 
-solr_url = 'http://localhost:8983/solr/'+ solr_core_name+ '/'
+exec(open("./config.py").read())
 
 search_result_rows = 20
 

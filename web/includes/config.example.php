@@ -94,3 +94,9 @@ $objectsTableInputTypes = array(
 $rolesArray = array("Author", "Editor", "Publisher", "Translator", "Creator", "Etcher", "Engraver", "Owner", "Artist", "Architect", "Binder", "Book designer", "Book producer", "Calligrapher", "Cartographer", "Collector", "Colorist", "Commentator for written text", "Compiler", "Compositor", "Creator", "Dubious author", "Facsimilist", "Illuminator", "Illustrator", "Lithographer", "Printer", "Printer of plates", "Printmaker", "Repository", "Rubricator", "Scribe", "Sculptor", "Type designer", "Typographer", "Visual Artist", "Wood engraver", "Wood cutter");
 
 $genresArray = array("Account", "Accusation", "Aide", "Amercement", "Appeal", "Assize", "Benefice", "Brief", "Canon", "Casus", "Causa", "Census", "Certificate", "Challenge", "Charge", "Code of laws", "Collection", "Commentary", "Consilium", "Consistory", "Contract", "Corpus", "Council", "Covenant", "Damages", "Defense", "Decretal", "Deposition", "Dicta", "Dispensation", "Distinction", "Edict", "Enfeoffement", "Evidence", "Formula", "Gloss", "Handbook", "Immunity", "Imperial constitution", "Inquest", "Inquisition", "Investigation", "Judgment", "Manumission", "Narrative", "Oath", "Opinion", "Petition", "Plea", "Prescription", "Privilege", "Process", "Proof", "Receipt", "Regulation", "Rescript", "Response", "Statute", "Summa", "Summation", "Synod", "Testament", "Testimony", "Treatise", "Trial", "Textbook", "Verdict", "Voucher", "Will", "Writ");
+
+
+global $solrUrl;
+$solrUrl = 'http://solr:8983/solr/';
+global $searchUrl;
+$searchUrl = 'http://search:5000';

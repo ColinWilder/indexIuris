@@ -21,7 +21,7 @@ require_once "includes/solr.php";
     </div>
   </div>
 <?php 
-$res = file_get_contents("http://10.0.0.111:5000".$_SERVER['REQUEST_URI']);
+$res = file_get_contents($searchUrl.$_SERVER['REQUEST_URI']);
 print ($res);
 ?>
 </div>

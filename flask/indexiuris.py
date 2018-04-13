@@ -45,7 +45,7 @@ def search():
         unsafe_query['f']='all'
     unsafe_query['start'] = unsafe_query['start'] if not unsafe_query['start']==None else "0"
     unsafe_query['rows'] = unsafe_query['rows'] if not unsafe_query['rows']==None else "20"
-    r = requests.post('http://localhost:5001/searchapi',json=unsafe_query)
+    r = requests.post(search_url+'/searchapi',json=unsafe_query)
     print(r.status_code)
     print(r.text)
     search_results = json.loads(r.text)
@@ -416,5 +416,5 @@ def searchapi():
         response.set_data(json_encode(str(err)))
         return response
         #response.set_data(json_encode({'error':'Internal solr error. Timeout error. Please contact a system administrator for assistance.','err':err}))
-#if __name__ == "__main__":
-#    app.run(host='0.0.0.0',debug=True,port=5001)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0',debug=True,port=5000)

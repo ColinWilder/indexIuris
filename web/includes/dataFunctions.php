@@ -304,7 +304,7 @@ function getAllObjectIds(){
 function permanentlyDeleteObject($object_id){
 
   deleteOneValue($object_id,"alt_titles");
-  deleteOneValue($object_id,"datess");
+  deleteOneValue($object_id,"dates");
   deleteOneValue($object_id,"disciplines");
   deleteOneValue($object_id,"genres");
   deleteOneValue($object_id,"languages");

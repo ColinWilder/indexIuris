@@ -32,7 +32,7 @@ $statement->bind_result($custom_namespace, $rdf_about, $archive, $title, $type_o
           <?php if (isSuper()):?>
           <hr>
             <form action="delete" method="POST" onsubmit="return confirm('Are you sure you want to PERMANENTLY delete this record?')">
-              <input type="hidden" value="<?php print $id;?>">
+              <input type="hidden" value="<?php print $id;?>" name="id">
               <input type="submit" value="Delete" class="btn btn-danger"> 
             </form>
           <?php endif;?>

@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  solr:
+    build: ./docker-solr
+    volumes:
+      - ./solr:/var/solr
+    ports:
+      - "8983:8983"
+  search:
+    build: ./docker-flask
+    volumes:
+      - ./flask:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - solr
+  web:
+    build: ./docker-web
+    volumes:
+      - ./web:/var/www/html
+    ports:
+      - "3000:80"
+    depends_on:
+      - solr
+      - search

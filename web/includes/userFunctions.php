@@ -19,13 +19,13 @@ ini_set("display_errors", "On");
  * @param {String} $email
  * @param {String} $captcha: The CAPTCHA value.
  */
-function register($username, $password1, $password2, $email, $captcha) {
+function register($username, $password1, $password2, $email/*, $captcha*/) {
   global $mysqli;
   $email     = $mysqli->real_escape_string(trim($email));
   $username  = $mysqli->real_escape_string(trim($username));
   $password1 = trim($password1);
   $password2 = trim($password2);
-  $response  = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . CAPTCHA_SECRET_KEY . "&response=" . $captcha));
+  /*$response  = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . CAPTCHA_SECRET_KEY . "&response=" . $captcha));
 
   if ($response->success != 1) {
     if ($response->{"error-codes"}[0] == "missing-input-response") {
@@ -35,7 +35,7 @@ function register($username, $password1, $password2, $email, $captcha) {
     } else {
       return "Something went wrong while trying to validate the CAPTCHA. Please try again.";
     }
-  } // if ($response->success != 1)
+  } // if ($response->success != 1)*/
 
   if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $statement = $mysqli->prepare("SELECT 1 FROM users WHERE email = ?");
@@ -74,7 +74,7 @@ function register($username, $password1, $password2, $email, $captcha) {
       $_SESSION["logged-in"] = true;
       $_SESSION["user_role"] = "contributor";
 
-      sendEmailVerification($email);
+      //sendEmailVerification($email);
 
       return "Success";
     }
