@@ -45,12 +45,17 @@ def search():
         unsafe_query['f']='all'
     unsafe_query['start'] = unsafe_query['start'] if not unsafe_query['start']==None else "0"
     unsafe_query['rows'] = unsafe_query['rows'] if not unsafe_query['rows']==None else "20"
-    r = requests.post(search_url+'/searchapi',json=unsafe_query)
-    print(search_url+'/searchapi')
+    #r = requests.post(search_url+'/searchapi',json=unsafe_query)
+    #print(search_url+'/searchapi')
     #print(r.status_code)
     #print(r.text)
-    search_results = json.loads(r.text)
-    pprint(search_results)
+    #search_results = json.loads(r.text)
+    search_results = searchapi(unsafe_query).response[0].decode('utf8')
+    pprint(type(search_results))
+    #search_results = search_results.response.decode('utf8')
+    #print(search_results)
+    search_results = json.loads(search_results)
+    #print(vars(search_results))
     facets = {}
     filter_queries = unsafe_query['fq'] if 'fq' in unsafe_query else {}
     for f,data in search_results['facets']['facet_fields'].items():
@@ -343,8 +348,10 @@ def build_query_for_all_fields(query):
     return query_string
 
 @app.route('/searchapi',methods=['POST'])
-def searchapi():
+def searchapi(alt_post=None):
     data = request.get_json()
+    if alt_post is not None:
+        data = alt_post
     pprint(data)
     query = data['q'] if 'q' in data else None
     start = data['start'] if 'start' in data else None
@@ -353,6 +360,8 @@ def searchapi():
     response = Response()
     response.headers['Content-Type'] = 'application/json'
     if query==None or start==None:
+        if alt_post is not None:
+            return {'error':'Parameter not set'}
         response.set_data(json_encode({'error':'Parameter not set'}))
         return response
     
@@ -398,24 +407,34 @@ def searchapi():
     pprint(search_query)
     try:
         solr_response = get_solr_results (search_query)
-        pprint(solr_response)
+        #pprint(solr_response)
+        resp = ""
         if not solr_response['responseHeader']['status'] ==0:
-            response.set_data(json_encode({'error':'Unspecified solr. Please contact a system administrator for assistance.'}))
+            resp = {'error':'Unspecified solr. Please contact a system administrator for assistance.'}
+            if alt_post is not None:
+                return resp
+            response.set_data(json_encode(resp))
         response.headers['Content-Type'] = 'application/json'
-        response.set_data(json_encode({
+        resp = {
         'error':'None',
         'response':solr_response['response'],
         'facets': solr_response['facet_counts'],
         'highlighting': solr_response['highlighting'],
         'responseHeader':solr_response['responseHeader']
-        }))
+        }
+        response.set_data(json_encode(resp))
         return response
     except ValueError:
+        if alt_post is not None:
+            return {'error':'Internal solr error. Value error. Please contact a system administrator for assistance.'}
         response.set_data(json_encode({'error':'Internal solr error. Value error. Please contact a system administrator for assistance.'}))
         return response
     except TimeoutError as err:
+        if alt_post is not None:
+            return {'error':str(err)}
         response.set_data(json_encode(str(err)))
         return response
         #response.set_data(json_encode({'error':'Internal solr error. Timeout error. Please contact a system administrator for assistance.','err':err}))
 if __name__ == "__main__":
     app.run(host='0.0.0.0',debug=True,port=5000)
+

@@ -6,4 +6,4 @@ RUN pip3 install gunicorn flask requests
 
 WORKDIR /app
 EXPOSE 5000
-ENTRYPOINT gunicorn indexiuris:app -w 4 --bind 0.0.0.0:5000
+ENTRYPOINT gunicorn indexiuris:app -w 2 --bind 0.0.0.0:5000
